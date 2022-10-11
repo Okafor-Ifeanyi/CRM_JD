@@ -71,8 +71,10 @@ class AgentUpdateView(Is_OrganiserAndLoginRequiredMixin, generic.UpdateView):
         return reverse("agents:agent_list")
 
     def get_queryset(self):
-        organisation = self.request.user.userprofile
-        return Agent.objects.filter(organisation=organisation)
+        user = self.request.user
+        organisation = user.userprofile
+        queryset = Agent.objects.filter(organisation=organisation)
+        return queryset
 
 class AgentDeleteView(Is_OrganiserAndLoginRequiredMixin, generic.DeleteView):
     template_name = "agent_delete.html"

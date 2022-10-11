@@ -88,7 +88,7 @@ class LeadCreateView(Is_OrganiserAndLoginRequiredMixin, generic.CreateView):
 class LeadUpdateView(Is_OrganiserAndLoginRequiredMixin, generic.UpdateView):
     template_name = "lead_update.html"
     form_class = LeadModelForm
-    queryset = Lead.objects.all()
+    
     
     def get_success_url(self):
         return reverse('leads:leads')
